@@ -401,7 +401,7 @@ class Window(Ui_MainWindow):
 		self.create_input_signal = self.CreateInputSignal(self)
 
 		self.input_sender = InputSender(self)
-		self.input_thread = Thread(target=self.input_sender.run)
+		self.input_thread = Thread(target=self.input_sender.run, daemon=True)
 		self.input_thread.start()
 
 	def record(self):
@@ -1087,13 +1087,12 @@ class Window(Ui_MainWindow):
 	def closeEvent(self, event):
 		# check if there are any unsaved changes, if there aren't any just quit
 		if  settings["windowStaysOnTop"] == self.windowstaysontopinput.isChecked() and \
-			settings["startStopAutomationKey"] == self.startstopinput.text():
+			settings["startStopAutomationKey"] == self.startstopinput.text() and \
+			settings["stopRecordingKey"] == self.stoprecordinginput.text() and \
+			settings["recordDelay"] == self.recorddelayinput.value():
 			if selected_automation != {}:
-				names = []
-				for input in inputs:
-					names.append(input.text)
-
-				if  selected_automation["inputs"] == names and \
+				update_inputs_text()
+				if  selected_automation["inputs"] == inputs_text and \
 					selected_automation["loopIterations"] == self.loopiterationsinput.value() and \
 					selected_automation["loopDelay"] == self.loopdelayinput.value() and \
 					selected_automation["loopSpeed"] == self.loopspeedinput.value():
@@ -1102,7 +1101,6 @@ class Window(Ui_MainWindow):
 			else:
 				event.accept()
 				quit()
-
 
 		msg_box = QtWidgets.QMessageBox(self.main_window)
 		msg_box.setWindowTitle("Discard changes?")

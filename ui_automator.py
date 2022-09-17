@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'c:\Users\drumi\Desktop\BiggerTask\automator.ui'
+# Form implementation generated from reading ui file 'c:\Users\drumi\OneDrive\Personal\Programming\Python\Automator\automator.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.7
 #

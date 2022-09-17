@@ -13,7 +13,7 @@ Now just run `python3 app.py`.
 ## How to run (without Python installed)
 Go to [Releases](https://github.com/Androdir/Automator/releases/tag/automator) and download and extract `automator.zip`.
 
-Inside this folder, you will see another folder named "data" and an executable file named "app.exe". Run the file "app.exe".
+Open the new folder and open the folder "auto". Here, you will see another folder named "data" and an executable file named "app.exe". Run the file "app.exe".
 
 P.S. app.exe was created with pyinstaller.
 
